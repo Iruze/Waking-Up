@@ -28,6 +28,7 @@
 ------
 
 ### 什么是三次握手 (three-way handshake)？
+- [TCP的三次握手与四次挥手理解及面试题（很全面）](https://blog.csdn.net/qq_38950316/article/details/81087809)
 
 ![三次握手](_v_images/20191129101827556_21212.png)
 
