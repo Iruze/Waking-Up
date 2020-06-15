@@ -8,6 +8,7 @@
     * [进程调度策略有哪些？](#进程调度策略有哪些)
     * [什么是僵尸进程？](#什么是僵尸进程)
     * [线程同步有哪些方式？](#线程同步有哪些方式)
+    * [什么是协程？](#什么是协程)
     * [什么是IO多路复用？怎么实现？](#什么是IO多路复用怎么实现)
     * [什么是用户态和内核态？](#什么是用户态和内核态)
 * 死锁
@@ -73,10 +74,11 @@
 4. 信号(Signal)
 5. 共享内存
 6. 信号量(Semaphore)：初始化操作、P操作、V操作；P操作：信号量-1，检测是否小于0，小于则进程进入阻塞状态；V操作：信号量+1，若小于等于0，则从队列中唤醒一个等待的进程进入就绪态
-
-![https://blog.csdn.net/sweetyoyy/article/details/77926871](_v_images/20191202162008435_14938.png)
-
 7. 套接字(Socket)
+
+更详细的可以参考（待整理）：
+- https://imageslr.github.io/2020/02/26/ipc.html
+- https://www.jianshu.com/p/c1015f5ffa74
 
 ### 进程同步问题
 
@@ -98,47 +100,91 @@ wait操作：执行wait操作的进程进入条件变量链末尾，唤醒紧急
 <summary>生产者-消费者问题</summary>
 
 > 问题描述：使用一个缓冲区来存放数据，只有缓冲区没有满，生产者才可以写入数据；只有缓冲区不为空，消费者才可以读出数据
->
-> ```c
-> // 伪代码描述 
-> // 定义信号量 full记录缓冲区物品数量 empty代表缓冲区空位数量 mutex为互斥量
-> semaphore full = 0, empty = n, mutex = 1;
-> 
-> // 生产者进程
-> void producer(){
-> 	do{
->    	  P(empty);
-> 	  P(mutex);
-> 
->      // 生产者进行生产
->    	
->    	  V(mutex);
->    	  V(full);
->  	} while(1);
-> }
-> 
-> void consumer(){
-> 	do{
-> 	  P(full);
-> 	  P(mutex);
-> 
->     	// 消费者进行消费
-> 
-> 	  V(mutex);
-> 	  V(empty);
->  	} while(1);
-> }
-> 
-> ```
->
-> 
->
-> </details>
+
+代码实现：
+```c
+// 伪代码描述 
+// 定义信号量 full记录缓冲区物品数量 empty代表缓冲区空位数量 mutex为互斥量
+semaphore full = 0, empty = n, mutex = 1;
+
+// 生产者进程
+void producer(){
+	do{
+   	  P(empty);
+	  P(mutex);
+
+     // 生产者进行生产
+   	
+   	  V(mutex);
+   	  V(full);
+ 	} while(1);
+}
+
+void consumer(){
+	do{
+	  P(full);
+	  P(mutex);
+
+    	// 消费者进行消费
+
+	  V(mutex);
+	  V(empty);
+ 	} while(1);
+}
+
+```
+</details>
 
 <details>
 <summary>哲学家就餐问题</summary>
 
+> 问题描述：有五位哲学家围绕着餐桌坐，每一位哲学家要么思考，要么吃饭。为了吃饭，哲学家必须拿起两双筷子（分别放于左右两端）不幸的是，筷子的数量和哲学家相等，所以每只筷子必须由两位哲学家共享。
 
+代码实现：
+```c
+#define N 5  // number of philosopher
+#define LEFT (i + N - 1)%N // number of i's left neighbors
+#define RIGHT (i + 1)%N // number of i's right neighbors
+#define THINKING 0
+#define HUNGRY 1
+#define EATING 2
+typedef int semaphore;
+int state[N]; // array to keep track of everyone's state
+semaphore mutex = 1; // mutual exclusion of critical region
+semaphore s[N]; 
+
+void philosopher(int i) {
+	while (TRUE) {
+		think();
+		take_forks(i);
+		eat();
+		put_forks(i);
+	}
+}
+
+void take_forks(int i) {
+	down(&mutex); // enter critical region
+	state[i] = HUNGRY; // record that i is hungry
+	test_forks(i); // try to acquire two forks
+	up(&mutex); // exit critical region
+	down(&s[i]); // block if forks are not acquired
+}
+
+void put_forks(int i) {
+	down(&mutex); // enter critical region
+	state[i] = THINKING; // record that has finished eating
+	test_forks(LEFT); // see if left neighbor can now eat
+	test_forks(RIGHT); // see if right neighbor can now eat
+	up(&mutex); // exit critical region
+}
+
+void test_forks(int i) {
+	if (state[i] == HUNGRY && state[LEFT] != EATING && state[RIGHT] != EATING) {
+		state[i] = EATING;
+		up(&s[i]);
+	}
+}
+```
 </details>
 
 <details>
@@ -286,6 +332,21 @@ wait操作：执行wait操作的进程进入条件变量链末尾，唤醒紧急
 <summary>展开</summary>
 
 互斥量是可以命名的，可以用于不同进程之间的同步；而临界区只能用于同一进程中线程的同步。创建互斥量需要的资源更多，因此临界区的优势是速度快，节省资源。
+</details>
+
+### 什么是协程？
+
+协程是一种用户态的轻量级线程，协程的调度完全由用户控制。协程拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈，直接操作栈则基本没有内核切换的开销，可以不加锁的访问全局变量，所以上下文的切换非常快。
+
+##### 协程多与线程进行比较？
+<details>
+<summary>展开</summary>
+
+1. 一个线程可以拥有多个协程，一个进程也可以单独拥有多个协程，这样python中则能使用多核CPU。
+
+2. 线程进程都是同步机制，而协程则是异步
+
+3. 协程能保留上一次调用时的状态，每次过程重入时，就相当于进入上一次调用的状态
 </details>
 
 ### 什么是IO多路复用？怎么实现？
@@ -490,3 +551,6 @@ IO多路复用（IO Multiplexing）是指单个进程/线程就可以同时处�
 - [ ] 进程同步问题：生产者-消费者问题...
 - [ ] 银行家算法
 - [ ] 文件与文件系统、文件管理？
+<div>
+<img src="_v_images/20191202162008435_14938.png" width=540px></img>
+</div>

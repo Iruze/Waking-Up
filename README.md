@@ -2,11 +2,7 @@
 
 > 大多数人都高估了他们一天能做的事情，但低估了他们一年能做的事情
 
-## 补充：字节跳动研发岗位内推！！！有效期至 2020-6-30 
-我们部门现在大量招人，HC 100+，入职几率高，内推免笔试，可远程面试。这边是部门直推，不用走冗长的流程，HR极速审核，然后推给部门预约面试。之前投过字节不影响，可以捞起来再进行面试。  
-【工作地点】北京/上海；  
-【岗位】后端/前端/C++客户端/Android/iOS/测试；**社招/实习/校招**均可，实习开放可转正实习/日常实习/暑期实习，社招开放初级/中级/高级各种级别  
-【简历投递】简历请发送至：zhangzekuan@bytedance.com；邮件标题：社招/实习/校招+岗位+姓名。所有邮件一天之内回复，我可以帮忙查进度以及修改简历，有任何岗位、简历进度、面试相关的问题都可以问我~
+## 补充:eyeglasses:：字节跳动部门直推，请戳[:raising_hand::raising_hand:这里:raising_hand::raising_hand:](https://github.com/wolverinn/Waking-Up/issues/16)
 
 <div align="center">
 <img src="_v_images/20191229112508482_31766.png"></img>
@@ -45,6 +41,27 @@ Contributers:
 <a href="https://github.com/QianXu1998">
     <img src="https://avatars3.githubusercontent.com/u/30328533?s=400&v=4" width="40px">
 </a> 
+<a href="https://github.com/XifeiNi">
+    <img src="https://avatars3.githubusercontent.com/u/31680997?s=88&v=4" width="40px">
+</a> 
+<a href="https://github.com/Zjd1996">
+    <img src="https://avatars3.githubusercontent.com/u/17854831?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/imbant">
+    <img src="https://avatars3.githubusercontent.com/u/17983739?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/lienze">
+    <img src="https://avatars3.githubusercontent.com/u/13149356?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/hikirkendall">
+    <img src="https://avatars0.githubusercontent.com/u/38038825?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/lutherlau">
+    <img src="https://avatars3.githubusercontent.com/u/29849382?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/CharlesZKQ">
+    <img src="https://avatars0.githubusercontent.com/u/58759901?s=460&v=4" width="40px">
+</a> 
 
 ## 1. [计算机网络](Computer%20Network.md)
 
@@ -66,7 +83,12 @@ Contributers:
 
 ## 4. [设计模式](Design%20Pattern.md)
 
-（待整理）
+Provided by @[lutherlau](https://github.com/lutherlau)
+
+<div>
+<a href="Design Pattern.md" target="_blank"><img src="_v_images/20200516165618.png"></img><br/>
+<img src="_v_images/20200516165630.png"></img></a>
+</div>
 
 ## 5. [工具](Git-ComdLine-REST.md)
 
