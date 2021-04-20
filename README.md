@@ -2,7 +2,8 @@
 
 > 大多数人都高估了他们一天能做的事情，但低估了他们一年能做的事情
 
-## 补充:eyeglasses:：字节跳动部门直推，请戳[:raising_hand::raising_hand:这里:raising_hand::raising_hand:](https://github.com/wolverinn/Waking-Up/issues/16)
+## 补充:eyeglasses:：字节跳动部门直推（实习/社招），请戳[:raising_hand::raising_hand:这里:raising_hand::raising_hand:](https://github.com/wolverinn/Waking-Up/issues/16)
+## 字节跳动校招内推码: ```YZGYZWU``` 投递链接: https://job.toutiao.com/s/Jjq9YQT
 
 <div align="center">
 <img src="_v_images/20191229112508482_31766.png"></img>
@@ -33,6 +34,8 @@
 
 这个仓库目前还在不断完善之中，有些问题还没加入到笔记，有些问题的思路和答案可以做得更好！如果你有很棒的想法，欢迎提 issues 或者 pull requests！
 
+感谢所有参与到这个项目中的伙伴们（如果下面漏掉了你，可以提醒我一下）～
+
 Contributers: 
 
 <a href="https://github.com/wangzitiansky">
@@ -61,6 +64,21 @@ Contributers:
 </a> 
 <a href="https://github.com/CharlesZKQ">
     <img src="https://avatars0.githubusercontent.com/u/58759901?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/MarcelArthur">
+    <img src="https://avatars0.githubusercontent.com/u/12690819?s=400&v=4" width="40px">
+</a> 
+<a href="https://github.com/zhou-xia-ping">
+    <img src="https://avatars.githubusercontent.com/u/40256652?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/jiamingli9674">
+    <img src="https://avatars.githubusercontent.com/u/39242771?s=460&v=4" width="40px">
+</a> 
+<a href="https://github.com/zhukewen1998">
+    <img src="https://avatars.githubusercontent.com/u/53121066?s=400&v=4" width="40px">
+</a> 
+<a href="https://github.com/chaoers">
+    <img src="https://avatars.githubusercontent.com/u/44529210?s=400&v=4" width="40px">
 </a> 
 
 ## 1. [计算机网络](Computer%20Network.md)
